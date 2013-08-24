@@ -112,19 +112,58 @@ class Safecracker_data_attributes_ext {
 	{
 		$this->obj =& $obj;
 
+		// data-* attributes
 		$params = $this->obj->EE->TMPL->tagparams;
-		$data_attrs = '';
+		$attrs = '';
 
 		foreach ($params as $attr => $val)
 		{
 			if (preg_match('/^data-/', $attr)) {
-				$data_attrs .= $attr . '="'.$val.'" ';
+				$attrs .= $attr . '="'.$val.'" ';
 			}
 		}
 
-		$tagdata = str_replace('<form ', '<form '.$data_attrs , $tagdata);
+		// additional html5 attributes
+		$params = array(
+			'autocomplete',
+			'novalidate'
+		);
+
+		foreach($params as $param)
+		{
+			if($value = $this->param($param, FALSE))
+			{
+				$attrs .= $param . '="'.$value.'" ';
+			}
+		}
+
+		// modify the tag data with our new form attributes
+		$tagdata = str_replace('<form ', '<form '.$attrs , $tagdata);
 
 		return $tagdata;
+	}
+
+	private function param($param, $default = FALSE, $boolean = FALSE, $required = FALSE)
+	{
+		$name	= $param;
+		$param 	= $this->obj->EE->TMPL->fetch_param($param);
+		
+		if($required && !$param) show_error('You must define a "'.$name.'" parameter in the '.__CLASS__.' tag.');
+			
+		if($param === FALSE && $default !== FALSE)
+		{
+			$param = $default;
+		}
+		else
+		{				
+			if($boolean)
+			{
+				$param = strtolower($param);
+				$param = ($param == 'true' || $param == 'yes') ? TRUE : FALSE;
+			}			
+		}
+		
+		return $param;			
 	}
 }
 
