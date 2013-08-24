@@ -20,16 +20,18 @@
  * @package		ExpressionEngine
  * @subpackage	Addons
  * @category	Extension
+ * @author		Justin Kimbrell
+ * @link		http://www.objectivehtml.com
  * @author		Jason Varga
  * @link		http://pixelfear.com
  */
 
-class Safecracker_data_attributes_ext {
+class Safecracker_html5_attributes_ext {
 	
 	public $settings 		= array();
-	public $description		= 'Add HTML5 data attributes to the available Safecracker Parameters.';
+	public $description		= 'Add HTML5 attributes to the available Safecracker Parameters.';
 	public $docs_url		= '';
-	public $name			= 'Safecracker Data Attributes';
+	public $name			= 'Safecracker HTML5 Attributes';
 	public $settings_exist	= 'n';
 	public $version			= '1.0';
 	
@@ -167,5 +169,5 @@ class Safecracker_data_attributes_ext {
 	}
 }
 
-/* End of file ext.safecracker_data_attributes.php */
-/* Location: /system/expressionengine/third_party/safecracker_data_attributes/ext.safecracker_data_attributes.php */
+/* End of file ext.safecracker_html5_attributes.php */
+/* Location: /system/expressionengine/third_party/safecracker_html5_attributes/ext.safecracker_html5_attributes.php */
