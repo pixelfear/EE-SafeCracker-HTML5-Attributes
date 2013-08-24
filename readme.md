@@ -1,3 +1,5 @@
-# SafeCracker Data Attributes
+# SafeCracker HTML5 Attributes
 
-If you need to use `data-foo="bar"` on your SafeCracker forms. Natively, it isn't supported and this extension patches it.
+Natively, SafeCracker doesn't support HTML5 attributes on it's form tag.
+
+This extension allows you to use `data-foo="bar"`, `autocomplete="no"` and `novalidate="novalidate"`.
