@@ -113,17 +113,16 @@ class Safecracker_data_attributes_ext {
 		$this->obj =& $obj;
 
 		$params = $this->obj->EE->TMPL->tagparams;
-		$data_params = array();
+		$data_attrs = '';
 
-		$data_string = '';
 		foreach ($params as $attr => $val)
 		{
 			if (preg_match('/^data-/', $attr)) {
-				$data_string .= $attr . '="'.$val.'" ';
+				$data_attrs .= $attr . '="'.$val.'" ';
 			}
 		}
 
-		$tagdata = str_replace('<form ', '<form '.$data_string , $tagdata);
+		$tagdata = str_replace('<form ', '<form '.$data_attrs , $tagdata);
 
 		return $tagdata;
 	}
